@@ -1,83 +1,53 @@
 #include "home.h"
 #include "ui_home.h"
 
-int beep;
-
-
 Home::Home(QWidget *parent): QMainWindow(parent), ui(new Ui::Home)
 {
     ui->setupUi(this);
     setWindowFlags(Qt::Window | Qt::MSWindowsFixedSizeDialogHint);
-
+    ports.append(ui->lineEdit->text());
+    services = new Services;
 
 }
-
 Home::~Home()
 {
     delete ui;
 }
-
-void Home::server()
+void Home::setText()
 {
-    servidor = new QTcpServer;
-    connect(servidor,SIGNAL(newConnection()),this,SLOT(sockets()));
-    QString portArm = ui->lineEdit->text();
-;
-    if(!servidor->listen(QHostAddress::AnyIPv4,portArm.toInt())){
-        qDebug() << "falha!!";
-        ativo = 0;
 
-    }else{
-        qDebug() << "funfou";
-        ativo = 1;
-    }
+       ui->textEdit->append("tentativa de conexão");
 }
-
-void Home::sockets()
-{
-    QTcpSocket *socket = servidor->nextPendingConnection();
-    QByteArray escrever("alo alo cliente");
-    QString portArm = ui->lineEdit->text();
-    QString ipp = ("Tentativa de Conexão: " + socket->peerAddress().toString() + ":"+ portArm);
-    if (beep == 2){
-        QApplication::beep();
-    }
-    ui->textEdit->append(ipp);
-    //socket->write(escrever);
-    //socket->waitForReadyRead();
-    //socket->flush();
-    //socket->waitForBytesWritten(3000);
-    socket->close();
-}
-
-
 void Home::on_pushButton_clicked()
 {
-    server();
-    if(ativo){
-       ui->textEdit->append("Serviço Iniciado!\n");
+    services->parse_cmdline(ui->lineEdit->text());
+
+
+    if(services->nPorts == 0){
+        ui->textEdit->append("need one argument");
     }else{
-        ui->textEdit->append("Serviço já está ativo\n");
+        services->multiServer();
+        ui->textEdit->append("serviço iniciado");
+
+      for(int i = 0; i< services->nPorts; i++){
+
+          connect(services->test[i]->servidor,SIGNAL(newConnection()),this,SLOT(setText()));
+
+      }
+
     }
-
-
 }
-
-
 void Home::on_pushButton_2_clicked()
 {
-    if(!ativo){
-        ui->textEdit->append("Serviço está parado\n");
-    }else{
-        ui->textEdit->append("Parando Serviço!\n");
-        servidor->close();
-        ativo = 0;
+    for(int i = 0; i< services->nPorts; i++){
+        services->test[i]->stpServer();
+        ui->textEdit->append(services->test[i]->msg);
     }
 
 }
-
 void Home::on_checkBox_stateChanged(int arg1)
 {
     qDebug() << arg1;
-    beep = arg1;
+    socks1->beep = arg1;
 }
+

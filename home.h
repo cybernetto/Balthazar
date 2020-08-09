@@ -3,10 +3,9 @@
 
 #include <QMainWindow>
 #include <QObject>
-#include <QTcpServer>
-#include <QTcpSocket>
-#include <QtDebug>
 #include <QObject>
+#include "services.h"
+#include <QMetaMethod>
 
 
 QT_BEGIN_NAMESPACE
@@ -16,26 +15,32 @@ QT_END_NAMESPACE
 class Home : public QMainWindow
 {
     Q_OBJECT
-    QTcpServer *servidor;
-    QString ip;
-    bool ativo = 0;
+
 
 public:
     Home(QWidget *parent = nullptr);
     ~Home();
-    void server();
+    QString ports;
+    int position;
+
+    Socks *socks1;
+
+
+    Services *services;
 
 
 
 public slots:
 
 
-    void sockets();
-    void on_pushButton_clicked();
+
+
+
 
 private slots:
+    void setText();
     void on_pushButton_2_clicked();
-
+    void on_pushButton_clicked();
     void on_checkBox_stateChanged(int arg1);
 
 private:

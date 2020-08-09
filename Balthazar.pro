@@ -19,10 +19,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    home.cpp
+    home.cpp \
+    services.cpp \
+    socks.cpp
 
 HEADERS += \
-    home.h
+    home.h \
+    services.h \
+    socks.h
 
 FORMS += \
     home.ui
