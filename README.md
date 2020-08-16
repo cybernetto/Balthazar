@@ -1,8 +1,8 @@
 # Balthazar
-A simple Qt sockets Honeypot.
+####A simple Qt sockets Honeypot. :smile:
 
-
-Install:
-qmake Balthazar.pro
-make
-./Balthazar
+# How to use?
+Go to folder of project!
+$ qmake Balthazar.pro
+$ make
+$. /Balthazar
