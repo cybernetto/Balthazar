@@ -20,7 +20,7 @@
    <string>Balthazar</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset>
     <normaloff>:/logo.png</normaloff>:/logo.png</iconset>
   </property>
   <property name="whatsThis">
@@ -485,7 +485,7 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-image: url(:/logo.png);opacity: 0.5; background-position: center; background-size: 10px;background-repeat: no-repeat;
+       <string notr="true">opacity: 0.5; background-position: center; background-size: 10px;background-repeat: no-repeat;
   background-attachment: fixed;</string>
       </property>
      </widget>
@@ -626,7 +626,7 @@
      <x>0</x>
      <y>0</y>
      <width>436</width>
-     <height>20</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArquivo">
@@ -643,8 +643,6 @@
    <addaction name="menuSobre"/>
   </widget>
  </widget>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

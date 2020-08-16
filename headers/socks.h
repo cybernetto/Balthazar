@@ -7,6 +7,7 @@
 #include <QtDebug>
 #include <QVector>
 
+
 class Socks : public QObject
 {
     Q_OBJECT

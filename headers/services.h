@@ -17,7 +17,7 @@ public:
     Socks *socks1;
     QStringList list;
     int nPorts;
-
+    QString publica;
 
     void parse_cmdline(QString arg1);
 

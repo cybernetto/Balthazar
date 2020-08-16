@@ -1,4 +1,4 @@
-#include "home.h"
+#include "./headers/home.h"
 #include "ui_home.h"
 
 Home::Home(QWidget *parent): QMainWindow(parent), ui(new Ui::Home)
@@ -15,8 +15,13 @@ Home::~Home()
 }
 void Home::setText()
 {
+    QString test = "";
+    for(int i = 0; i< services->nPorts; i++){
+        test.append(services->test[i]->ipp);
+        services->test[i]->ipp = "";
 
-       ui->textEdit->append("tentativa de conexão");
+    }
+    ui->textEdit->append(test);
 }
 void Home::on_pushButton_clicked()
 {

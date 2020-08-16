@@ -18,23 +18,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    home.cpp \
-    services.cpp \
-    socks.cpp
+    sources/main.cpp \
+    sources/home.cpp \
+    sources/services.cpp \
+    sources/socks.cpp
 
 HEADERS += \
-    home.h \
-    services.h \
-    socks.h
+    headers/home.h \
+    headers/services.h \
+    headers/socks.h
 
 FORMS += \
-    home.ui
+    UI/home.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES += \
-    images.qrc
+RESOURCES +=

@@ -1,4 +1,4 @@
-#include "home.h"
+#include "./headers/home.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

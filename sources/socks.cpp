@@ -1,5 +1,6 @@
-#include "socks.h"
-#include <iostream>
+#include "./headers/socks.h"
+//#include <iostream>
+#include <./headers/home.h>
 
 Socks::Socks(QObject *parent) : QObject(parent)
 {

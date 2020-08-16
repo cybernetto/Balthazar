@@ -1,4 +1,4 @@
-#include "services.h"
+#include "./headers/services.h"
 
 Services::Services(QObject *parent) : QObject(parent)
 {
@@ -22,9 +22,9 @@ void Services::multiServer()
 
     for(int i = 0; i< nPorts; i++){
         test.append(new Socks);
-        test[i] = new Socks;
+        //test[i] = new Socks;
         test[i]->server(list[i]);
-    }
+        }
 
 }
 
