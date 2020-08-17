@@ -6,4 +6,4 @@
 Go to project folder! <br><br>
 $ qmake Balthazar.pro<br>
 $ make<br>
-$. /Balthazar<br>
+$ ./Balthazar<br>
